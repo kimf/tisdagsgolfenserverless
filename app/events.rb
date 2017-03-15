@@ -24,8 +24,8 @@ class Events < Rack::App
   def created_event_params(id, course, scoring_type, starts_at, team_event)
     par = push_params
     par[:contents] = {
-      en: "#{starts_at}. #{course}. #{team_event ? 'Team' : 'Individual'}, #{scoring_type&.capitalize}",
-      sv: "#{starts_at}. #{course}. #{team_event ? 'Lag' : 'Individuell'}, #{scoring_type == 'points' ? 'Poäng' : 'Slag'}"
+      en: "#{starts_at}. #{course.club}: #{course.name}. #{team_event ? 'Team' : 'Individual'}, #{scoring_type&.capitalize}",
+      sv: "#{starts_at}. #{course.club}: #{course.name}. #{team_event ? 'Lag' : 'Individuell'}, #{scoring_type == 'points' ? 'Poäng' : 'Slag'}"
     }
     par[:headings] = {
       en: 'New round added',
